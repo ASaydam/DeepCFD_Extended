@@ -9,11 +9,13 @@ setup(
     description='This is an extended edition of the original DeepCFD: Efficient Steady-State Laminar Flow'
         'Approximation with Deep Convolutional Neural Networks',
     researcher='Alper Saydam',
+    researcher_email='asaydam21@ku.edu.tr',
     original_author='Mateus Dias Ribeiro, Carlos Peña Monferrer',
     original_author_email='mateusdiasbr@gmail.com',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/mdribeiro/DeepCFD',
+    url='https://github.com/ASaydam/DeepCFD_Extended',
+    original_url='https://github.com/mdribeiro/DeepCFD',
     packages=['deepcfd', 'deepcfd.models'],
     package_dir={'': 'src'},
     classifiers=[
