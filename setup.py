@@ -16,7 +16,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/ASaydam/DeepCFD_Extended',
     original_url='https://github.com/mdribeiro/DeepCFD',
-    packages=['deepcfd', 'deepcfd.models'],
+    packages=['deepcfd_extended', 'deepcfd.models'],
     package_dir={'': 'src'},
     classifiers=[
         "Programming Language :: Python :: 3",
