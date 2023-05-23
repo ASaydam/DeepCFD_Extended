@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='deepcfd-extended',
-    version='0.1',
+    name='deepcfd',
+    version='2.0.0',
     description='DeepCFD: Efficient Steady-State Laminar Flow'
         'Approximation with Deep Convolutional Neural Networks',
     author='Mateus Dias Ribeiro',
