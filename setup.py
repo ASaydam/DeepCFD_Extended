@@ -4,19 +4,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='deepcfd_extended',
+    name='deepcfd-extended',
     version='0.1',
-    description='This is an extended edition of the original DeepCFD: Efficient Steady-State Laminar Flow'
+    description='DeepCFD: Efficient Steady-State Laminar Flow'
         'Approximation with Deep Convolutional Neural Networks',
-    researcher='Alper Saydam',
-    researcher_email='asaydam21@ku.edu.tr',
-    original_author='Mateus Dias Ribeiro, Carlos Peña Monferrer',
-    original_author_email='mateusdiasbr@gmail.com',
+    author='Mateus Dias Ribeiro',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/ASaydam/DeepCFD_Extended',
-    original_url='https://github.com/mdribeiro/DeepCFD',
-    packages=['deepcfd_extended', 'deepcfd.models'],
+    url='https://github.com/mdribeiro/DeepCFD',
+    packages=['deepcfd-extended', 'deepcfd.models'],
     package_dir={'': 'src'},
     classifiers=[
         "Programming Language :: Python :: 3",
