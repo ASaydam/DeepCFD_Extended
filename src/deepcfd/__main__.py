@@ -103,7 +103,7 @@ def parseOpts(argv):
         elif opt in ("-f", "--filters"):
             filters = [int(x) for x in arg.split(',')]
         elif opt in ("-ly", "--layers"):
-            layers = float(arg)
+            layers = int(arg)
         elif opt in ("-l", "--learning-rate"):
             learning_rate = float(arg)
         elif opt in ("-e", "--epochs"):

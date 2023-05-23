@@ -28,6 +28,7 @@ Options:
     -o, --output        PATH  model output (default: mymodel.pt)
     -k, --kernel-size   INT   kernel size (default: 5)
     -f, --filters       TEXT  filter size (default: 8,16,32,32)
+    -ly, --layers       INT   number of layers (default: 3)
     -l, --learning-rate FLOAT learning rage (default: 0.001)
     -e, --epochs        INT   number of epochs (default: 1000)
     -b, --batch-size    INT   training batch size (default: 32)
