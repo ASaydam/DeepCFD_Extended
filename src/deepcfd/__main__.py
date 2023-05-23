@@ -14,9 +14,10 @@ from torch.autograd import Variable
 
 def parseOpts(argv):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    net= "UNetEx"
+    net = "UNetEx"
     kernel_size = 5
     filters = [8, 16, 32, 32]
+    layers = 3
     model_input = "dataX.pkl"
     model_output = "dataY.pkl"
     output = "mymodel.pt"
@@ -28,7 +29,7 @@ def parseOpts(argv):
 
     try:
         opts, args = getopt.getopt(
-            argv,"hd:n:mi:mo:o:k:f:l:e:b:p:v",
+            argv,"hd:n:mi:mo:o:k:f:ly:l:e:b:p:v",
             [
                 "device=",
                 "net=",
@@ -37,6 +38,7 @@ def parseOpts(argv):
                 "output=",
                 "kernel-size=",
                 "filters=",
+                "layers=",
                 "learning-rate=",
                 "epochs=",
                 "batch-size=",
@@ -62,6 +64,7 @@ def parseOpts(argv):
                 "\n    -o <output>  model output (default: mymodel.pt)"
                 "\n    -k <kernel-size>  kernel size (default: 5)"
                 "\n    -f <filters>  filter sizes (default: 8,16,32,32)"
+                "\n    -ly <layers>  number of layers (default: 3)"
                 "\n    -l <learning-rate>  learning rate (default: 0.001)"
                 "\n    -e <epochs>  number of epochs (default: 1000)"
                 "\n    -b <batch-size>  training batch size (default: 32)"
@@ -99,6 +102,8 @@ def parseOpts(argv):
             kernel_size = int(arg)
         elif opt in ("-f", "--filters"):
             filters = [int(x) for x in arg.split(',')]
+        elif opt in ("-ly", "--layers"):
+            layers = float(arg)
         elif opt in ("-l", "--learning-rate"):
             learning_rate = float(arg)
         elif opt in ("-e", "--epochs"):
@@ -124,6 +129,7 @@ def parseOpts(argv):
         'output': output,
         'kernel_size': kernel_size,
         'filters': filters,
+        'layers': layers,
         'learning_rate': learning_rate,
         'epochs': epochs,
         'batch_size': batch_size,
@@ -167,10 +173,15 @@ def main():
 
     torch.manual_seed(0)
 
+    # Define number of channels according to data
+    num_input_channel = x.shape[1]
+    num_output_channel = y.shape[1]
+
     model = options["net"](
-        3,
-        3,
+        in_channels=num_input_channel,
+        out_channels=num_output_channel,
         filters=options["filters"],
+        layers=options["layers"],
         kernel_size=options["kernel_size"],
         batch_norm=False,
         weight_norm=False
